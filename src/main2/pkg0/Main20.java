@@ -10,7 +10,7 @@ public class Main20 {
         int op,op1;
         String login,senha;
         
-        //alterado da web
+        
         SistemaAdm s = new SistemaAdm("ADM","ADM");
         
             do{
