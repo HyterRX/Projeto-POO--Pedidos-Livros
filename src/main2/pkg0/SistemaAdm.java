@@ -53,9 +53,9 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
     //METODOS PERSONALIZADOS PARA CLIENTES
     @Override
     public void CadastrarCliente() {
-        
-        System.out.println("\tCADASTRO CLIENTES\n");
-        
+        System.out.println("\t-------------------------");
+        System.out.println("\t    CADASTRO CLIENTES");
+        System.out.println("\t-------------------------\n");
         do{
             c = new Cliente();
             System.out.print("Nome: ");
