@@ -3,13 +3,11 @@ package main2.pkg0;
 import java.util.Scanner;
 
 public class Main20 {
-
-    public static void main(String[] args) {
-        
-        Scanner teclado = new Scanner(System.in);
+    
+    public static void menu() throws java.util.InputMismatchException{
         int op,op1;
         String login,senha;
-        
+        Scanner teclado = new Scanner(System.in);
         
         SistemaAdm s = new SistemaAdm("ADM","ADM","Gabriel Santos","82.98102-9294");
         
@@ -78,5 +76,21 @@ public class Main20 {
             System.out.print("\nDeseja Encerrar o Programa? S = 1/N = 0: ");
             op = teclado.nextInt();
             }while(op!=0);
+        
+    }
+    
+
+    public static void main(String[] args) {
+        
+        try{
+            menu();
+        }catch(java.util.InputMismatchException e){
+            System.out.println("insira um numero inteiro ao invés de uma letra");
+            Scanner teclado = new Scanner(System.in);
+            menu();
+            
+        }
+        
+        
     }   
 }
