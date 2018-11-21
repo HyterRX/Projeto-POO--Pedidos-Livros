@@ -11,11 +11,9 @@ public class Main20 {
         String login,senha;
         
         
-        SistemaAdm s = new SistemaAdm("ADM","ADM");
+        SistemaAdm s = new SistemaAdm("ADM","ADM","Gabriel Santos","82.98102-9294");
         
             do{
-                
-            
             System.out.println("**********************************MENU INICIAL**********************************\n");
             System.out.print("\t(1) -------- Cadastrar Cliente");
             System.out.println("  \t(2) -------- Cadastrar Editora");
@@ -28,13 +26,14 @@ public class Main20 {
             System.out.println("\n\t(0) -------- Encerrar Programa");
             System.out.print("\nOPÇÃO: ");
             op1 = teclado.nextInt();
-            System.out.println("\n********************************************************************************");
+            System.out.println("\n********************************************************************************\n");
             
             switch(op1){
                 case 1:
                     s.CadastrarCliente();
                     break;
                 case 2:
+                    s.CadastrarEditora();
                     break;
                 case 3:
                     break;
@@ -55,6 +54,24 @@ public class Main20 {
                         s.ExcluirCliente();
                     }else
                         System.out.println("Você não tem permissao");
+                    break;
+                case 7:
+                    
+                    break;
+                case 8:
+                    System.out.println("Para excluir o Cliente voce precisa da permissão do ADM");
+                    System.out.print("\n\n\t\tLogin: ");
+                    login = new Scanner(System.in).nextLine();
+                    System.out.print("\t\tSenha: ");
+                    senha = new Scanner(System.in).nextLine();
+                    
+                    System.out.println("");
+                    
+                    if(s.getLogin().equals(login) && s.getSenha().equals(senha)){
+                        s.ExcluirEditora();
+                    }else
+                        System.out.println("Você não tem permissao");
+                    
                     break;
             }
             

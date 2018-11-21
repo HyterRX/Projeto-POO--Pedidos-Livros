@@ -50,6 +50,7 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
     
     int op;
 
+    //METODOS PERSONALIZADOS PARA CLIENTES
     @Override
     public void CadastrarCliente() {
         
@@ -69,6 +70,16 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
             op = teclado.nextInt();
         }while(op!=0);
         
+    }
+    
+    @Override
+    public void ListarClientes(){
+        Iterator x = cliente.iterator();
+        System.out.println("Clientes");
+        while(x.hasNext()){
+            c = (Cliente)x.next();
+            System.out.println("Nome: "+c.getNome()+" CPF: "+c.getCpf());
+        }
     }
 
     @Override
@@ -95,7 +106,9 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
             }
         }
     }
-
+    
+    
+    //METODOS PERSONALIZADOS PARA EDITORAS
     @Override
     public void CadastrarEditora() {
         do{
@@ -110,14 +123,48 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
             op = teclado.nextInt();
         }while(op!=0);
     }
-
+    
     @Override
-    public void ExcluirEditora() {
+    public void ListarEditoras(){
         
     }
 
     @Override
+    public void ExcluirEditora() {
+        String nomeEdi;
+        if(editora.isEmpty()){
+            System.out.println("Nenhuma Editora foi Cadastrada !");
+        }else{
+            System.out.print("Selecione a Editora: ");
+            nomeEdi = new Scanner(System.in).nextLine();
+            
+            Iterator i = editora.iterator();
+            Editora ed = null;
+            while(i.hasNext()){
+                e = (Editora)i.next();
+                if(e.getNome().equals(nomeEdi)){
+                    ed = e;
+                    break;
+                    }
+                }if(ed == null){
+                System.out.println("Editora não encontrada !");
+            }else{
+                    editora.remove(ed);
+                    System.out.println("Editora Excluída com sucesso !");
+                }
+        }
+        
+    }
+    
+    
+    //METODOS PERSONALIZADOS PARA PEDIDOS
+    @Override
     public void RealizarPedido() {
+    }
+    
+    @Override
+    public void ListarPedidos(){
+        
     }
 
     @Override
