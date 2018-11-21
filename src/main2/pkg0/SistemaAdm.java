@@ -64,6 +64,15 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
             c.setTelefone(new Scanner(System.in).nextLine());
             System.out.print("CPF: ");
             c.setCpf(new Scanner(System.in).nextLine());
+            System.out.println("\n-------------------------");
+            System.out.println("\tENDEREÇO");
+            System.out.println("-------------------------\n");
+            System.out.print("Bairro:");
+            c.e.setBairro(new Scanner(System.in).nextLine());
+            System.out.print("Rua: ");
+            c.e.setRua(new Scanner(System.in).nextLine());
+            System.out.print("Numero da Casa: ");
+            c.e.setNumero(new Scanner(System.in).nextLine());
             cliente.add(c);
             
             System.out.print("\nDeseja Continuar? S = 1/N = 0: ");
