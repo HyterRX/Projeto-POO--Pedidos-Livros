@@ -2,19 +2,36 @@
 package main2.pkg0;
 
 
-public class Editora extends PessoaOuEditora{
+public class Editora{
     
     //Atributos
+    private String nome;
+    private String telefone;
     private String cnpj;
 
     //Metodos acessores
-    public Editora(String cnpj, String nome, String telefone) {
-        super(nome, telefone);
-        this.cnpj = cnpj;
-    }
+    
 
     public Editora() {
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
+    
     
     public String getCnpj() {
         return cnpj;

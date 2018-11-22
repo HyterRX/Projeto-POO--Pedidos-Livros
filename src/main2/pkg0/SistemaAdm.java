@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
+public class SistemaAdm extends Pessoa implements PermissaoAdm {
     
     
     private String login;
@@ -126,6 +126,8 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
             e.setNome(new Scanner(System.in).nextLine());
             System.out.print("Telefone: ");
             e.setTelefone(new Scanner(System.in).nextLine());
+            System.out.print("CNPJ: ");
+            e.setCnpj(new Scanner(System.in).nextLine());
             editora.add(e);
             
             System.out.print("\nDeseja Continuar? S = 1/N = 0: ");
@@ -135,7 +137,12 @@ public class SistemaAdm extends PessoaOuEditora implements PermissaoAdm {
     
     @Override
     public void ListarEditoras(){
-        
+        Iterator x = editora.iterator();
+        System.out.println("\tEditoras\n");
+        while(x.hasNext()){
+            e = (Editora)x.next();
+            System.out.print("Nome: "+e.getNome());
+        }
     }
 
     @Override

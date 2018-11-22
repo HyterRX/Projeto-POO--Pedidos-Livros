@@ -1,18 +1,18 @@
 package main2.pkg0;
 
-public abstract class PessoaOuEditora {
+public abstract class Pessoa {
     
     //Atributtos
     private String nome;
     private String telefone;
     
     //Metodos Acessores 
-    public PessoaOuEditora(String nome, String telefone) {
+    public Pessoa(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
     }
 
-    public PessoaOuEditora() {
+    public Pessoa() {
     }
     
     public String getNome() {

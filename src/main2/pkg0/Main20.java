@@ -1,29 +1,32 @@
 package main2.pkg0;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main20 {
     
-    public static void menu() throws java.util.InputMismatchException{
+    public static void menu() throws Exception{
         int op,op1;
         String login,senha;
         Scanner teclado = new Scanner(System.in);
         
-        SistemaAdm s = new SistemaAdm("ADM","ADM","Gabriel Santos","82.98102-9294");
+        
+            try{
+            SistemaAdm s = new SistemaAdm("ADM","ADM","Gabriel Santos","82.98102-9294");
         
             do{
-            System.out.println("**********************************MENU INICIAL**********************************\n");
-            System.out.print("\t(1) -------- Cadastrar Cliente");
-            System.out.println("  \t(2) -------- Cadastrar Editora");
-            System.out.print("\t(3) -------- Fazer Pedido");
-            System.out.println("            \t(4) -------- Pedidos em Andamento");
-            System.out.print("\t(5) -------- Listar Pedidos");
-            System.out.println("            \t(6) -------- Excluir Cliente");
-            System.out.print("\t(7) -------- Excluir Pedido");
-            System.out.println("            \t(8) -------- Excluir Editora");
-            System.out.println("\n\t(0) -------- Encerrar Programa");
-            System.out.print("\nOPÇÃO: ");
-            op1 = teclado.nextInt();
+                System.out.println("**********************************MENU INICIAL**********************************\n");
+                System.out.print("\t(1) -------- Cadastrar Cliente");
+                System.out.println("  \t(2) -------- Cadastrar Editora");
+                System.out.print("\t(3) -------- Fazer Pedido");
+                System.out.println("            \t(4) -------- Pedidos em Andamento");
+                System.out.print("\t(5) -------- Listar Pedidos");
+                System.out.println("            \t(6) -------- Excluir Cliente");
+                System.out.print("\t(7) -------- Excluir Pedido");
+                System.out.println("            \t(8) -------- Excluir Editora");
+                System.out.println("\n\t(0) -------- Encerrar Programa");
+                System.out.print("\nOPÇÃO: ");
+                op1 = teclado.nextInt();
             System.out.println("\n********************************************************************************\n");
             
             switch(op1){
@@ -71,26 +74,33 @@ public class Main20 {
                         System.out.println("Você não tem permissao");
                     
                     break;
+                }
+            
+                System.out.print("\nDeseja Encerrar o Programa? S = 1/N = 0: ");
+                op = teclado.nextInt();
+                }while(op!=0);
+            }catch(InputMismatchException e){
+                throw new Exception(e); 
             }
             
-            System.out.print("\nDeseja Encerrar o Programa? S = 1/N = 0: ");
-            op = teclado.nextInt();
-            }while(op!=0);
-        
     }
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception  {
         
-        try{
+       
+        try
+        {
             menu();
-        }catch(java.util.InputMismatchException e){
-            System.out.println("insira um numero inteiro ao invés de uma letra");
-            Scanner teclado = new Scanner(System.in);
+        }
+        catch(Exception e)
+        {
+            System.out.println("Ocorreu uma exceção");
+            System.out.println("Ao executar o método Menu()"+e);
+            System.out.println("Tente novamente: ");
             menu();
             
         }
-        
         
     }   
 }
