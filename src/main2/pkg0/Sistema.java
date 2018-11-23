@@ -4,42 +4,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class Sistema extends Pessoa implements Permissao {
-    
-    
-    private String login;
-    private String senha;
+public class Sistema extends Administrador implements Permissao {
 
     public Sistema(String login, String senha, String nome, String telefone) {
-        super(nome, telefone);
-        this.login = login;
-        this.senha = senha;
+        super(login, senha, nome, telefone);
+    }
+
+    public Sistema(String login, String senha) {
+        super(login, senha);
     }
 
     public Sistema() {
     }
-
-    public Sistema(String login, String senha) {
-        this.login = login;
-        this.senha = senha;
-    }
-    
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
     
     Cliente c = new Cliente();
     Editora e = new Editora();
