@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class SistemaAdm extends Pessoa implements PermissaoAdm {
+public class Sistema extends Pessoa implements Permissao {
     
     
     private String login;
     private String senha;
 
-    public SistemaAdm(String login, String senha, String nome, String telefone) {
+    public Sistema(String login, String senha, String nome, String telefone) {
         super(nome, telefone);
         this.login = login;
         this.senha = senha;
     }
 
-    public SistemaAdm() {
+    public Sistema() {
     }
 
-    public SistemaAdm(String login, String senha) {
+    public Sistema(String login, String senha) {
         this.login = login;
         this.senha = senha;
     }
@@ -78,19 +78,25 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
             c.e.setNumero(new Scanner(System.in).nextLine());
             cliente.add(c);
             
-            System.out.print("\nDeseja Continuar? S = 1/N = 0: ");
-            op = teclado.nextInt();
-        }while(op!=0);
+            System.out.println("\n(0) ----VOLTAR PARA MENU\n(1) ----NOVO CLIENTE");
+            System.out.print("OPÇÃO: ");
+            es = teclado.nextInt();
+            System.out.println("");
+        }while(es!=0);
         
     }
     
     @Override
     public void ListarClientes(){
+        if(cliente.isEmpty()){
+            System.out.println("Nenhum Cliente consta na Lista !");
+        }else{
         Iterator x = cliente.iterator();
         System.out.println("Clientes");
         while(x.hasNext()){
             c = (Cliente)x.next();
             System.out.println("Nome: "+c.getNome()+" CPF: "+c.getCpf());
+            }
         }
     }
 
@@ -137,12 +143,18 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
     
     @Override
     public void ListarEditoras(){
-        Iterator xy = editora.iterator();
-        System.out.println("\tEditoras\n");
-        while(xy.hasNext()){
-            e = (Editora)xy.next();
-            System.out.print("Nome: "+e.getNomeEditora());
+        if(editora.isEmpty()){
+            System.out.println("Nenhuma Editora Consta na Lista");
+        }else{
+            Iterator xy = editora.iterator();
+            System.out.println("\tEditoras\n");
+            while(xy.hasNext()){
+                e = (Editora)xy.next();
+                System.out.print("Nome: "+e.getNomeEditora());
         }
+            
+        }
+        
     }
 
     @Override
@@ -211,7 +223,7 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
             }
            
            if(cli == null || edi == null){
-               System.out.println("Impossivel Realizar Pedido Cliente ou Editora nao estao cadastrados");
+               System.out.println("\nImpossivel Realizar Pedido Cliente ou Editora nao estao cadastrados");
            }
            else{
                do{
@@ -240,23 +252,23 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
     
     @Override
     public void ListarPedidos(){
-        
-        System.out.print("\t\t-----------------------");
-        System.out.print("\n\t\t  PEDIDOS EM ANDAMENTO\n");
-        System.out.println("\t\t-----------------------\n");
-        
-        Iterator i = pedido.iterator();
         if(pedido.isEmpty()){
-            System.out.println("Nenhum pedido Está em Andamento\n");
+            System.out.println("\nNenhum Pedido está em Andamento!");
         }else{
-        while(i.hasNext()){
-            p = (Pedido)i.next();
-            System.out.println("Cliente: "+p.getCliente());
-            System.out.println("Editora: "+p.getEditora());
-            System.out.println("Livro: "+p.getNomeLivro());
-            System.out.println("Código do Pedido: "+p.getCodigoPedido()+"\n");
+            System.out.print("\t\t-----------------------");
+            System.out.print("\n\t\t  PEDIDOS EM ANDAMENTO\n");
+            System.out.println("\t\t-----------------------\n");
+        
+            Iterator i = pedido.iterator();
+            
+            while(i.hasNext()){
+                p = (Pedido)i.next();
+                System.out.println("Cliente: "+p.getCliente());
+                System.out.println("Editora: "+p.getEditora());
+                System.out.println("Livro: "+p.getNomeLivro());
+                System.out.println("Código do Pedido: "+p.getCodigoPedido()+"\n");
             }
-        }   
+        }
     }
 
     @Override
@@ -286,5 +298,8 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
         
         
     }
+    
+    
+  
     
 }

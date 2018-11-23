@@ -1,6 +1,6 @@
 package main2.pkg0;
 
-public interface PermissaoAdm {
+public interface Permissao {
     
     public void CadastrarCliente();
     public void ListarClientes();
