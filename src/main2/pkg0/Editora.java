@@ -5,22 +5,25 @@ package main2.pkg0;
 public class Editora{
     
     //Atributos
-    private String nome;
+    private String nomeEditora;
     private String telefone;
-    private String cnpj;
 
     //Metodos acessores
-    
+    public Editora(String nomeEditora, String telefone) {
+        this.nomeEditora = nomeEditora;
+        this.telefone = telefone;
+       
+    }
 
     public Editora() {
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeEditora() {
+        return nomeEditora;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeEditora = nome;
     }
 
     public String getTelefone() {
@@ -30,17 +33,4 @@ public class Editora{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
-    
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-    
-    
-    
 }

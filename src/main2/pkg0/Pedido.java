@@ -6,22 +6,21 @@ public class Pedido {
     private String nomeLivro;
     private int qtdLivro;
     private int codigoPedido;
-    private Editora nomeEditora;
-    private Cliente nomeCliente;
-
+    private String cliente;
+    private String editora;
     
     //Metodos acessores
-    public Pedido(String nomeLivro, int qtdLivro, int codigoPedido, Editora nomeEditora, Cliente nomeCliente) {
+    public Pedido(String nomeLivro, int qtdLivro, int codigoPedido, String cliente, String editora) {
         this.nomeLivro = nomeLivro;
         this.qtdLivro = qtdLivro;
         this.codigoPedido = codigoPedido;
-        this.nomeEditora = nomeEditora;
-        this.nomeCliente = nomeCliente;
+        this.cliente = cliente;
+        this.editora = editora;
     }
 
     public Pedido() {
     }
-
+    
     public String getNomeLivro() {
         return nomeLivro;
     }
@@ -46,26 +45,19 @@ public class Pedido {
         this.codigoPedido = codigoPedido;
     }
 
-    public Editora getNomeEditora() {
-        return nomeEditora;
+    public String getCliente() {
+        return cliente;
     }
 
-    public void setNomeEditora(Editora nomeEditora) {
-        this.nomeEditora = nomeEditora;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
-    public Cliente getNomeCliente() {
-        return nomeCliente;
+    public String getEditora() {
+        return editora;
     }
 
-    public void setNomeCliente(Cliente nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
-    
-    
-    
-    
-    
-    
-    
 }

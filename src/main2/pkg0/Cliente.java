@@ -1,5 +1,7 @@
 package main2.pkg0;
 
+
+
 public class Cliente extends Pessoa {
     
     Endereco e = new Endereco();
@@ -23,6 +25,7 @@ public class Cliente extends Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+    
     
    
     

@@ -16,6 +16,9 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
         this.senha = senha;
     }
 
+    public SistemaAdm() {
+    }
+
     public SistemaAdm(String login, String senha) {
         this.login = login;
         this.senha = senha;
@@ -48,7 +51,7 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
     
     Scanner teclado = new Scanner(System.in);
     
-    int op;
+    int op,es,x=0;
 
     //METODOS PERSONALIZADOS PARA CLIENTES
     @Override
@@ -59,7 +62,7 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
         do{
             c = new Cliente();
             System.out.print("Nome: ");
-            c.setNome(new Scanner(System.in).nextLine());
+            c.setNome(new Scanner(System.in).nextLine().toUpperCase());
             System.out.print("Telefone: ");
             c.setTelefone(new Scanner(System.in).nextLine());
             System.out.print("CPF: ");
@@ -116,18 +119,15 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
         }
     }
     
-    
     //METODOS PERSONALIZADOS PARA EDITORAS
     @Override
     public void CadastrarEditora() {
         do{
             e = new Editora();
             System.out.print("Editora: ");
-            e.setNome(new Scanner(System.in).nextLine());
+            e.setNome(new Scanner(System.in).nextLine().toUpperCase());
             System.out.print("Telefone: ");
             e.setTelefone(new Scanner(System.in).nextLine());
-            System.out.print("CNPJ: ");
-            e.setCnpj(new Scanner(System.in).nextLine());
             editora.add(e);
             
             System.out.print("\nDeseja Continuar? S = 1/N = 0: ");
@@ -137,11 +137,11 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
     
     @Override
     public void ListarEditoras(){
-        Iterator x = editora.iterator();
+        Iterator xy = editora.iterator();
         System.out.println("\tEditoras\n");
-        while(x.hasNext()){
-            e = (Editora)x.next();
-            System.out.print("Nome: "+e.getNome());
+        while(xy.hasNext()){
+            e = (Editora)xy.next();
+            System.out.print("Nome: "+e.getNomeEditora());
         }
     }
 
@@ -158,13 +158,13 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
             Editora ed = null;
             while(i.hasNext()){
                 e = (Editora)i.next();
-                if(e.getNome().equals(nomeEdi)){
+                if(e.getNomeEditora().equals(nomeEdi)){
                     ed = e;
                     break;
                     }
                 }if(ed == null){
                 System.out.println("Editora não encontrada !");
-            }else{
+                }else{
                     editora.remove(ed);
                     System.out.println("Editora Excluída com sucesso !");
                 }
@@ -176,16 +176,115 @@ public class SistemaAdm extends Pessoa implements PermissaoAdm {
     //METODOS PERSONALIZADOS PARA PEDIDOS
     @Override
     public void RealizarPedido() {
+        if(cliente.isEmpty() || editora.isEmpty()){
+            System.out.println("Impossível Realizar Pedido pois não existe nenhum cliente ou nenhuma editora cadastrado");
+        }else{
+           System.out.print("\nSelecione o Cliente: ");
+           String NomeCliente = new Scanner(System.in).nextLine().toUpperCase();
+           System.out.print("Selecione a Editora: ");
+           String NomeEditora = new Scanner(System.in).nextLine().toUpperCase();
+           
+           Cliente cli = null;//DECLARANDO UM OBJETO NULO
+           Editora edi = null;
+           
+           /*ESTRUTURA ABAIXO FOI CRIADA PARA PERCORRER TODA A LISTA PUXANDO OS NOMES DOS CLIENTES CADASTRADO
+            SE O NOME A SER SELECIONADO CONSTAR NA LISTA, 
+            O VALOR DO OBJETO CLI É ALTERADO PARA AQUELE CLIENTE COM O NOME PROCURADO
+            E DEIXA DE SER NULO.
+            SE NÃO EXISTIR NENHUM CLIENTE COM O NOME PROCURADO, O OBJETO CONTINUA NULO.
+            */
+           Iterator i = cliente.iterator();
+           while(i.hasNext()){
+               c = (Cliente)i.next();
+               if(c.getNome().equals(NomeCliente)){
+                   cli = c;
+                   break;
+               }
+           }
+           Iterator y = editora.iterator();
+           while(y.hasNext()){
+               e = (Editora)y.next();
+               if(e.getNomeEditora().equals(NomeEditora)){
+                   edi = e;
+                   break;
+                }
+            }
+           
+           if(cli == null || edi == null){
+               System.out.println("Impossivel Realizar Pedido Cliente ou Editora nao estao cadastrados");
+           }
+           else{
+               do{
+                    System.out.println("\n\t\tPEDIDO DO CLIENTE "+NomeCliente+"\n");
+                    
+                    p = new Pedido();
+                    p.setCodigoPedido(x+=1);
+                    p.setEditora(NomeEditora);
+                    p.setCliente(NomeCliente);
+                    System.out.print("Nome do Livro: ");
+                    p.setNomeLivro(new Scanner(System.in).nextLine());
+                    System.out.print("Quantidade: ");
+                    p.setQtdLivro(teclado.nextInt());
+                    pedido.add(p);
+                   
+                   System.out.println("\n(0) ----FINALIZAR PEDIDO\n(1) ----NOVO PEDIDO C/ MESMO CLIENTE");
+                   System.out.print("OPÇÃO: ");
+                   es = teclado.nextInt();
+               }while(es!=0);
+           }
+           
+        }  
+       
+       
     }
     
     @Override
     public void ListarPedidos(){
         
+        System.out.print("\t\t-----------------------");
+        System.out.print("\n\t\t  PEDIDOS EM ANDAMENTO\n");
+        System.out.println("\t\t-----------------------\n");
+        
+        Iterator i = pedido.iterator();
+        if(pedido.isEmpty()){
+            System.out.println("Nenhum pedido Está em Andamento\n");
+        }else{
+        while(i.hasNext()){
+            p = (Pedido)i.next();
+            System.out.println("Cliente: "+p.getCliente());
+            System.out.println("Editora: "+p.getEditora());
+            System.out.println("Livro: "+p.getNomeLivro());
+            System.out.println("Código do Pedido: "+p.getCodigoPedido()+"\n");
+            }
+        }   
     }
 
     @Override
     public void ExcluirPedido() {
+        if(pedido.isEmpty()){
+            System.out.println("Nenhum Pedido foi Cadastrado !");
+        }else{
+        System.out.print("Insira o Código do Pedido que Deseja excluir: ");
+        String cod = new Scanner(System.in).nextLine();
+        
+        Pedido ped = null;
+        Iterator i = pedido.iterator();
+        while(i.hasNext()){
+            p = (Pedido)i.next();
+            if(Integer.toString(p.getCodigoPedido()).equals(cod)){
+                ped = p;
+                break;
+            }
+        }if(ped == null){
+            System.out.println("\nPedido não Encontrado !");
+        }else{
+            pedido.remove(ped);
+            System.out.println("\n\tPedido Excluido com Sucesso");
+        }
+        
+       }
+        
+        
     }
-    
     
 }
