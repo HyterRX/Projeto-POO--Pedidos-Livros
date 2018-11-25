@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class Sistema extends Administrador implements Permissao {
+public class Sistema extends Adm implements Permissao {
 
     public Sistema(String login, String senha, String nome, String telefone) {
         super(login, senha, nome, telefone);
@@ -16,14 +16,17 @@ public class Sistema extends Administrador implements Permissao {
 
     public Sistema() {
     }
-    
+
+    //Classes Instaciadas
     Cliente c = new Cliente();
     Editora e = new Editora();
     Pedido p = new Pedido();
-    
+    Adm a = new Adm();
+    //Listas Criadas
     ArrayList cliente = new ArrayList();
     ArrayList editora = new ArrayList();
     ArrayList pedido = new ArrayList();
+    ArrayList adm = new ArrayList();
     
     Scanner teclado = new Scanner(System.in);
     
@@ -96,7 +99,7 @@ public class Sistema extends Administrador implements Permissao {
                 System.out.println("Cliente não encontrado !");
             }else{
                 cliente.remove(cl);
-                System.out.println("Cliente Excluído");
+                System.out.println("Cliente Excluído: "+cl.getNome());
             }
         }
     }
@@ -137,7 +140,7 @@ public class Sistema extends Administrador implements Permissao {
     public void ExcluirEditora() {
         String nomeEdi;
         if(editora.isEmpty()){
-            System.out.println("Nenhuma Editora foi Cadastrada !");
+            System.out.println("\nNenhuma Editora foi Cadastrada !");
         }else{
             System.out.print("Selecione a Editora: ");
             nomeEdi = new Scanner(System.in).nextLine();
@@ -250,7 +253,7 @@ public class Sistema extends Administrador implements Permissao {
     @Override
     public void ExcluirPedido() {
         if(pedido.isEmpty()){
-            System.out.println("Nenhum Pedido foi Cadastrado !");
+            System.out.println("\nNenhum Pedido foi Cadastrado !");
         }else{
         System.out.print("Insira o Código do Pedido que Deseja excluir: ");
         String cod = new Scanner(System.in).nextLine();
@@ -275,7 +278,7 @@ public class Sistema extends Administrador implements Permissao {
         
     }
     
-    
+   
   
     
 }

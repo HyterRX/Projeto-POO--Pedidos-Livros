@@ -1,5 +1,6 @@
 package main2.pkg0;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main20 {
@@ -9,14 +10,13 @@ public class Main20 {
         System.out.println ();
     }
     
-    public static void main(String[] args) {
+    public static void Menu() throws java.util.InputMismatchException{
         
-        Scanner teclado = new Scanner(System.in);
+       Scanner teclado = new Scanner(System.in);
             
-       int op,op1;
-       Sistema adm = new Sistema();
-       
-       try{
+       int op,op1,op2;
+       Sistema s = new Sistema("gabriel","1111");
+        
             do{
                 System.out.println("**********************************MENU INICIAL**********************************\n");
                 System.out.print("\t(1) -------- Cadastros");
@@ -41,10 +41,10 @@ public class Main20 {
                     op = teclado.nextInt();
                 switch (op) {
                     case 1:
-                        adm.CadastrarCliente();
+                        s.CadastrarCliente();
                         break;
                     case 2:
-                        adm.CadastrarEditora();
+                        s.CadastrarEditora();
                         break;
                     default:
                         System.out.println("Opção Inválida");
@@ -52,12 +52,21 @@ public class Main20 {
                 }
                     break;
                 case 2:
-                    adm.RealizarPedido();
+                    s.RealizarPedido();
                     break;
                 case 3:
-                    adm.ListarPedidos();
+                    s.ListarPedidos();
                     break;
                 case 4:
+                    System.out.println("\n\tNECESSITA DO LOGIN E SENHA DO SUPER ADM\n");
+                    
+                    System.out.print("\nLogin: ");
+                    String login = new Scanner(System.in).nextLine();
+                    System.out.print("Senha: ");
+                    String senha = new Scanner(System.in).nextLine();
+                    System.out.println("");
+                    
+                    if(s.getLogin().equals(login) && s.getSenha().equals(senha)){
                     System.out.println("\n(1) ---Excluir Cliente");
                     System.out.println("(2) ---Excluir Pedido");
                     System.out.println("(3) ---Excluir Editora");
@@ -65,31 +74,43 @@ public class Main20 {
                     op = teclado.nextInt();
                     switch(op){
                     case 1:
-                        adm.ExcluirCliente();
+                        s.ExcluirCliente();
                         break;
                     case 2:
-                        adm.ExcluirPedido();
+                        s.ExcluirPedido();
                         break;
                     case 3:
-                        adm.ExcluirEditora();
+                        s.ExcluirEditora();
                         break;
                     default:
                         System.out.println("Opção Inválida");
                         break;
                     }
                     break;
+                    }else{
+                        System.out.println("\n\tConta Inválida !\n");
+                    }
+                        
                 }
             
                 System.out.println("\n(0) ----Encerrar Programa Completo\n(1) ----Continuar Executando");
                 System.out.print("Opção: ");
                 op = teclado.nextInt();
-                
                 }while(op!=0);
-       }catch(java.util.InputMismatchException e){
-           System.out.println("Erro no Menu");
-       }
-                limparTela(); 
+    }
+    
+    
+    public static void main(String[] args) throws Exception {
+        
+        try{
+            Menu();
+        }catch(InputMismatchException e){
+            limparTela();
+            System.out.println("\t\nSÓ PODERÁ SER INSERIDO NUMEROS INTEIROS NA SELEÇÃO DE MENU");
+            System.out.println("\t\nPOR FAVOR, TENTE NOVAMENTE !");
+            Menu();
             
-            
+        }
+       
     }   
 }
