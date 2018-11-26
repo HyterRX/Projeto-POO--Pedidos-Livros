@@ -74,10 +74,10 @@ public class Sistema extends Adm implements Permissao {
         if(cliente.isEmpty()){
             System.out.println("Nenhum Cliente consta na Lista !");
         }else{
-        Iterator x = cliente.iterator();
+        Iterator u = cliente.iterator();
         System.out.println("Clientes");
-        while(x.hasNext()){
-            c = (Cliente)x.next();
+        while(u.hasNext()){
+            c = (Cliente)u.next();
             System.out.println("Nome: "+c.getNome()+" CPF: "+c.getCpf());
             }
         }
@@ -102,8 +102,9 @@ public class Sistema extends Adm implements Permissao {
             }if(cl == null){
                 System.out.println("Cliente não encontrado !");
             }else{
-                cliente.remove(cl);
                 System.out.println("Cliente Excluído: "+cl.getNome());
+                cliente.remove(cl);
+                
             }
         }
     }
@@ -126,6 +127,7 @@ public class Sistema extends Adm implements Permissao {
     
     @Override
     public void ListarEditoras(){
+        x=0;
         if(editora.isEmpty()){
             System.out.println("Nenhuma Editora Consta na Lista");
         }else{
@@ -133,9 +135,9 @@ public class Sistema extends Adm implements Permissao {
             System.out.println("\tEditoras\n");
             while(xy.hasNext()){
                 e = (Editora)xy.next();
-                System.out.print("Nome: "+e.getNomeEditora());
+                System.out.println("Nome "+(x+=1)+": "+e.getNomeEditora());
         }
-            
+                System.out.println("");   
         }
         
     }
@@ -147,22 +149,10 @@ public class Sistema extends Adm implements Permissao {
             System.out.println("\nNenhuma Editora foi Cadastrada !");
         }else{
             System.out.print("Selecione a Editora: ");
-            nomeEdi = new Scanner(System.in).nextLine();
-            
-            Iterator i = editora.iterator();
-            Editora ed = null;
-            while(i.hasNext()){
-                e = (Editora)i.next();
-                if(e.getNomeEditora().equals(nomeEdi)){
-                    ed = e;
-                    break;
-                    }
-                }if(ed == null){
-                System.out.println("Editora não encontrada !");
-                }else{
-                    editora.remove(ed);
-                    System.out.println("Editora Excluída com sucesso !");
-                }
+            int sel = teclado.nextInt();
+            editora.remove(sel-1);
+            System.out.println("\nEditora Excluída com sucesso !");
+                
         }
         
     }

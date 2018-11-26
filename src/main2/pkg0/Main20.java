@@ -69,16 +69,22 @@ public class Main20 {
                     System.out.println("\n(1) ---Excluir Cliente");
                     System.out.println("(2) ---Excluir Pedido");
                     System.out.println("(3) ---Excluir Editora");
-                    System.out.print("Opção: ");
+                    System.out.print("\nOpção: ");
                     op = teclado.nextInt();
                     switch(op){
                     case 1:
+                        s.ListarClientes();
+                        System.out.println("");
                         s.ExcluirCliente();
                         break;
                     case 2:
+                        s.ListarPedidos();
+                        System.out.println("");
                         s.ExcluirPedido();
                         break;
                     case 3:
+                        s.ListarEditoras();
+                        System.out.println("");
                         s.ExcluirEditora();
                         break;
                     default:
@@ -94,8 +100,8 @@ public class Main20 {
             
                 System.out.println("\n(0) ----Encerrar Programa Completo\n(1) ----Continuar Executando");
                 System.out.print("Opção: ");
-                op = teclado.nextInt();
-                }while(op!=0);
+                op2 = teclado.nextInt();
+                }while(op2!=0);
     }
     
     public static void main(String[] args) throws Exception {
