@@ -127,7 +127,7 @@ public class Sistema extends Adm implements Permissao {
     
     @Override
     public void ListarEditoras(){
-        x=0;
+       x=0;
         if(editora.isEmpty()){
             System.out.println("Nenhuma Editora Consta na Lista");
         }else{

@@ -14,7 +14,7 @@ public class Main20 {
         
        Scanner teclado = new Scanner(System.in);
             
-       int op,op1,op2;
+       int op;
        Sistema s = new Sistema("gabriel","1111");
         
             do{
@@ -27,9 +27,9 @@ public class Main20 {
                 System.out.println("\n********************************************************************************\n");
                
                 System.out.print("\nSelecione: ");
-                op1 = teclado.nextInt();
+                op = teclado.nextInt();
             
-                switch(op1){
+                switch(op){
                 case 0:
                     System.out.println("Encerrando Programa ...........");
                     break;
@@ -107,11 +107,11 @@ public class Main20 {
             
                 System.out.println("\n(0) ----Encerrar Programa Completo\n(1) ----Continuar Executando");
                 System.out.print("Opção: ");
-                op2 = teclado.nextInt();
-                }while(op2!=0);
+                op = teclado.nextInt();
+                }while(op!=0);
     }
     
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         
         try{
             Menu();
