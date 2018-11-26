@@ -45,7 +45,7 @@ public class Sistema extends Adm implements Permissao {
         do{
             c = new Cliente();
             System.out.print("Nome: ");
-            c.setNome(new Scanner(System.in).nextLine().toUpperCase());
+            c.setNome(new Scanner(System.in).nextLine().toUpperCase().trim());
             System.out.print("Telefone: ");
             c.setTelefone(new Scanner(System.in).nextLine());
             System.out.print("CPF: ");
@@ -114,8 +114,8 @@ public class Sistema extends Adm implements Permissao {
     public void CadastrarEditora() {
         do{
             e = new Editora();
-            System.out.print("Editora: ");
-            e.setNome(new Scanner(System.in).nextLine().toUpperCase());
+            System.out.print("\nEditora: ");
+            e.setNome(new Scanner(System.in).nextLine().toUpperCase().trim());
             System.out.print("Telefone: ");
             e.setTelefone(new Scanner(System.in).nextLine());
             editora.add(e);
@@ -150,6 +150,7 @@ public class Sistema extends Adm implements Permissao {
         }else{
             System.out.print("Selecione a Editora: ");
             int sel = teclado.nextInt();
+            
             editora.remove(sel-1);
             System.out.println("\nEditora Excluída com sucesso !");
                 
@@ -165,9 +166,9 @@ public class Sistema extends Adm implements Permissao {
             System.out.println("Impossível Realizar Pedido pois não existe nenhum cliente ou nenhuma editora cadastrado");
         }else{
            System.out.print("\nSelecione o Cliente: ");
-           String NomeCliente = new Scanner(System.in).nextLine().toUpperCase();
+           String NomeCliente = new Scanner(System.in).nextLine().toUpperCase().trim();
            System.out.print("Selecione a Editora: ");
-           String NomeEditora = new Scanner(System.in).nextLine().toUpperCase();
+           String NomeEditora = new Scanner(System.in).nextLine().toUpperCase().trim();
            
            Cliente cli = null;//DECLARANDO UM OBJETO NULO
            Editora edi = null;

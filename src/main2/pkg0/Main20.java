@@ -41,9 +41,12 @@ public class Main20 {
                 switch (op) {
                     case 1:
                         s.CadastrarCliente();
+                        limparTela();
                         break;
+                       
                     case 2:
                         s.CadastrarEditora();
+                        limparTela();
                         break;
                     default:
                         System.out.println("Opção Inválida");
@@ -52,15 +55,17 @@ public class Main20 {
                     break;
                 case 2:
                     s.RealizarPedido();
+                     limparTela();
                     break;
                 case 3:
                     s.ListarPedidos();
+                     limparTela();
                     break;
                 case 4:
                     System.out.println("\n\tNECESSITA DO LOGIN E SENHA DO ADM\n");
                     
                     System.out.print("\nLogin: ");
-                    String login = new Scanner(System.in).nextLine();
+                    String login = new Scanner(System.in).nextLine().toLowerCase();
                     System.out.print("Senha: ");
                     String senha = new Scanner(System.in).nextLine();
                     System.out.println("");
@@ -76,16 +81,18 @@ public class Main20 {
                         s.ListarClientes();
                         System.out.println("");
                         s.ExcluirCliente();
+                        limparTela();
                         break;
                     case 2:
                         s.ListarPedidos();
                         System.out.println("");
                         s.ExcluirPedido();
+                        limparTela();
                         break;
                     case 3:
                         s.ListarEditoras();
-                        System.out.println("");
                         s.ExcluirEditora();
+                        limparTela();
                         break;
                     default:
                         System.out.println("Opção Inválida");
