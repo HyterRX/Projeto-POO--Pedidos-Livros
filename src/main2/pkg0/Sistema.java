@@ -21,13 +21,17 @@ public class Sistema extends Adm implements Permissao {
     Cliente c = new Cliente();
     Editora e = new Editora();
     Pedido p = new Pedido();
+    /*
     Adm a = new Adm();
+    */
+    
     //Listas Criadas
     ArrayList cliente = new ArrayList();
     ArrayList editora = new ArrayList();
     ArrayList pedido = new ArrayList();
+    /*
     ArrayList adm = new ArrayList();
-    
+    */
     Scanner teclado = new Scanner(System.in);
     
     int op,es,x=0;
@@ -278,7 +282,22 @@ public class Sistema extends Adm implements Permissao {
         
     }
     
-   
-  
+    /*
+   public void CadastrarAdm(){
+       do{
+           
+          a = new Adm();
+          System.out.print("Login: ");
+          a.setLogin(new Scanner(System.in).nextLine());
+          System.out.print("Senha: ");
+          a.setSenha(new Scanner(System.in).nextLine());
+          adm.add(a);
+           
+           System.out.print("\nDeseja Continuar? S = 1/N = 0: ");
+           op = teclado.nextInt();
+        }while(op!=0);
+       
+   }
+  */
     
 }

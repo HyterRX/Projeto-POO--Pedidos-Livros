@@ -25,10 +25,9 @@ public class Main20 {
                 System.out.println("\t(4) -------- Excluir");
                 System.out.println("\n\t(0) -------- Encerrar Programa");
                 System.out.println("\n********************************************************************************\n");
-                
+               
                 System.out.print("\nSelecione: ");
                 op1 = teclado.nextInt();
-           
             
                 switch(op1){
                 case 0:
@@ -58,7 +57,7 @@ public class Main20 {
                     s.ListarPedidos();
                     break;
                 case 4:
-                    System.out.println("\n\tNECESSITA DO LOGIN E SENHA DO SUPER ADM\n");
+                    System.out.println("\n\tNECESSITA DO LOGIN E SENHA DO ADM\n");
                     
                     System.out.print("\nLogin: ");
                     String login = new Scanner(System.in).nextLine();
@@ -98,7 +97,6 @@ public class Main20 {
                 op = teclado.nextInt();
                 }while(op!=0);
     }
-    
     
     public static void main(String[] args) throws Exception {
         

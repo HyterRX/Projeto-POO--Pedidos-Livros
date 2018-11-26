@@ -12,7 +12,6 @@ public class Editora{
     public Editora(String nomeEditora, String telefone) {
         this.nomeEditora = nomeEditora;
         this.telefone = telefone;
-       
     }
 
     public Editora() {
